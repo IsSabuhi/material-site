@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { AppBar, Container, IconButton, Toolbar, Typography, Box } from '@material-ui/core';
+import { AppBar, Container, IconButton, Toolbar, Typography, Box, Paper, Grid } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import {makeStyles} from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
@@ -15,6 +15,27 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1
+  },
+  mainFeaturesPost: {
+    position: "relative",
+    color: theme.palette.common.white,
+    marginBottom: theme.spacing(4),
+
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center"
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundOverlay: "rgba(0,0,0,.9",
+  },
+  mainFeaturesPostContent: {
+    position: "relative",
+    padding: theme.spacing(9)
   }
 }))
 
@@ -22,6 +43,8 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   return (
+    <>
+
     <AppBar position="fixed">
       <Container fixed>
         <Toolbar>
@@ -36,6 +59,45 @@ function App() {
         </Toolbar>
       </Container>
     </AppBar>
+
+    <main>
+      <Paper className={classes.mainFeaturesPost}
+      style={ {backgroundImage: `url(https://source.unsplash.com/random)` }}>
+        <Container fixed>
+          <div className={classes.overlay} />
+
+          <Grid container>
+            <Grid item md={6}>
+
+              <div className={classes.mainFeaturePostContent}>
+                <Typography 
+                component="h1"
+                variant="h3"
+                color="inherit"
+                gutterBottom>
+                  Web Developer Blog
+                </Typography>
+                <Typography 
+                component="h5"
+                color="inherit"
+                paragraph>
+                  Lorem ipsum dolor sit amet, c od jashvjla 
+                  djofmsadsaf adijgnldm fsd fkjnla ms asd  sa
+                  asdgfkbs naa fisduhgo ja bfanp rwe uye 8ef a
+                  fjbskl;k aa asfhiuoa ;kfa fsa ka sfoasbfia asf
+                </Typography>
+                <Button variant="contained" color="secondary">
+                  Learn more
+                </Button>
+              </div>
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
+    </main>
+
+
+    </>
   );
 }
 
