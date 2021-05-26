@@ -1,9 +1,12 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { AppBar, Container, IconButton, Toolbar, Typography, Box, Paper, Grid } from '@material-ui/core';
+import { AppBar, Container, IconButton, Toolbar, Typography, Box, Paper, Grid, Card, CardMedia, CardContent, CardActions } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import LayerIcon from '@material-ui/icons/Layers';
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import {makeStyles} from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
+import SignIn from './signin';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,16 +38,26 @@ const useStyles = makeStyles((theme) => ({
   },
   mainFeaturesPostContent: {
     position: "relative",
-    padding: theme.spacing(9)
+    padding: theme.spacing(6),
+    marginTop: theme.spacing(8)
+  },
+  CardMedia: {
+    paddingTop: "56.25%"
+  },
+  CardContent: {
+    flexGrow: 1
+  },
+  cardGrid: {
+    marginTop: theme.spacing(4)
   }
 }))
 
+const cards = [1,2,3,4,5,6,7,8,9];
 
 function App() {
   const classes = useStyles();
   return (
     <>
-
     <AppBar position="fixed">
       <Container fixed>
         <Toolbar>
@@ -94,8 +107,66 @@ function App() {
           </Grid>
         </Container>
       </Paper>
+      <div className={classes.mainContent}>
+        <Container maxWidth="md">
+          <Typography variant="h2" align="center" color="textPrimary" qutterBottom>Web Developer Blog</Typography>
+          <Typography variant="h5" align="center" color="textPrimary" paragraph>lorem Nostrud anim reprehenderit 
+                                                                                occaecat ipsum consequat irure enim 
+                                                                                sit eiusmod officia. Eiusmod amet id 
+                                                                                et sunt labore pariatur enim mollit 
+                                                                                laborum occaecat reprehenderit nisi. 
+                                                                                Cillum adipisicing eu sunt adipisicing 
+                                                                                veniam sint. Magna incididunt mollit anim 
+                                                                                id Lorem sint qui qui quis. Velit aliquip 
+                                                                                mollit aliquip fugiat fugiat laboris ullamco 
+                                                                                est cupidatat amet non id anim adipisicing.
+          </Typography>
+        </Container>
+        <div className={classes.marginBottom}>
+          <Grid container spacing={2} justify="center">
+            <Grid item>
+              <Button variant="contained" color="primary" >Start Now</Button>
+            </Grid>
+            <Grid item>
+              <Button variant="outlined" color="primary" >Learn more</Button>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
+      <Container className={classes.cardGrid} maxWidth="md">
+        <Grid container spacing={4}>
+          {cards.map((card) => (
+            <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                  className = {classes.CardMedia}
+                  image="https://source.unsplash.com/random"
+                  title="Image title"
+                />
+                <CardContent className={classes.CardContent}>
+                  <Typography variant="h5" gutterBottom>
+                    Blog post
+                  </Typography>
+                  <Typography >
+                   Blog Post. Web Developer Blog Web Developer Blog. Blog Post
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small" color="primary">
+                    View
+                  </Button>
+                  <Button size="small" color="primary">
+                    Edit
+                  </Button>
+                  <LayerIcon />
+                  <PlayCircleFilledIcon />
+                </CardActions>
+                </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </main>
-
 
     </>
   );
