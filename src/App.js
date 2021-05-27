@@ -122,7 +122,7 @@ function App() {
               </DialogActions>
             </Dialog>
           </Box>
-          <Button color="secondary" variant="contained">Sign Up</Button>
+          <Button color="secondary" variant="contained" >Sign Up</Button>
         </Toolbar>
       </Container>
     </AppBar>
