@@ -4,7 +4,8 @@ import {
   AppBar, Container, IconButton, Toolbar, 
   Typography, Box, Paper, Grid, Card, 
   CardMedia, CardContent, CardActions, 
-  BottomNavigation, BottomNavigationAction 
+  BottomNavigation, BottomNavigationAction, 
+  Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions 
 } from '@material-ui/core';
 
 import FolderIcon from '@material-ui/icons/Folder';
@@ -74,6 +75,14 @@ function App() {
     setValue(newValue);
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  }
+  const handleClose = () => {
+    setOpen(false);
+  }
 
   return (
     <>
@@ -85,7 +94,33 @@ function App() {
           </IconButton>
           <Typography variant="h6"className={classes.title}>Web Developer Blog</Typography>
           <Box mr={3}>
-            <Button color="inherit" variant="outlined">Log In</Button>
+            <Button color="inherit" variant="outlined" onClick={handleClickOpen}>Log In</Button>
+            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+              <DialogTitle id="form-dialog-title">Log in</DialogTitle>
+              <DialogContent>
+                <DialogContentText> Log in to see videos </DialogContentText>
+                <TextField 
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Email Adress"
+                      type="email"
+                      fullWidth
+                />
+                <TextField 
+                      autoFocus
+                      margin="dense"
+                      id="pass"
+                      label="Password"
+                      type="password"
+                      fullWidth
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose} color="primary">Cancel</Button>
+                <Button onClick={handleClose} color="primary">Log in</Button>
+              </DialogActions>
+            </Dialog>
           </Box>
           <Button color="secondary" variant="contained">Sign Up</Button>
         </Toolbar>
