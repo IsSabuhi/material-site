@@ -17,8 +17,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import LayerIcon from '@material-ui/icons/Layers';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import {makeStyles} from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
-import SignIn from './signin';
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -84,6 +84,10 @@ function App() {
     setOpen(false);
   }
 
+  const handleOpen = () => {
+    setOpen(true);
+  }
+
   return (
     <>
     <AppBar position="fixed">
@@ -122,7 +126,8 @@ function App() {
               </DialogActions>
             </Dialog>
           </Box>
-          <Button color="secondary" variant="contained" >Sign Up</Button>
+          <Button color="secondary" variant="contained"d>Sign Up</Button>
+          
         </Toolbar>
       </Container>
     </AppBar>
